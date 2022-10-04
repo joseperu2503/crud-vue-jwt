@@ -5,8 +5,12 @@ const router = createRouter({
     routes: [
         {
             path: '/',
+            redirect:'login',
+        },
+        {
+            path: '/login',
             name:'login',
-            component: () =>  import('../pages/Login.vue')
+            component: () =>  import('../pages/Login.vue'),
         },
         {
             path: '/register',
@@ -14,7 +18,20 @@ const router = createRouter({
             component: () =>  import('../pages/Register.vue'),
             props:true
         },
+        {
+            path: '/home',
+            name: 'home',
+            component: () =>  import('../pages/Home.vue'),
+        },
     ]
 })
+
+router.beforeEach((to, from) => {
+    if(to.name == 'home' && from.name === 'login'){
+        return true
+    }
+    return true
+})
+
 
 export { router }

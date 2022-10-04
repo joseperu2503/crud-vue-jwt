@@ -3,7 +3,13 @@
         <Card>
             <h2 class="text-2xl font-bold">Welcome back</h2>
             <p class="text-sm font-light text-slate-500">
-                Start your website in seconds. Don’t have an account? <span class="text-indigo-600 font-medium cursor-pointer">Sign up.</span>
+                Start your website in seconds. Don’t have an account?
+                <span 
+                    class="text-indigo-600 font-medium cursor-pointer"
+                    @click="signUp"
+                >
+                    Sign up.
+                </span>
             </p>
             <div class="grid grid-cols-2 gap-6 mt-10">
                 <Input label="Username" type="text" placeholder="juniorp2503"/>
@@ -23,7 +29,12 @@
                 <span class="text-sm text-indigo-600 font-medium hover:underline cursor-pointer">Forgot password?</span>
             </div>
             <div class="mt-6">
-                <button type="button" class="w-full text-white bg-indigo-600 hover:bg-indigo-700 shadow border font-medium rounded-lg text-sm px-5 py-2 flex justify-center items-center">
+                <button 
+                    type="button" 
+                    class="w-full text-white bg-indigo-600 hover:bg-indigo-700 shadow border font-medium rounded-lg text-sm px-5 py-2 flex justify-center items-center"
+                    @click="login"
+                >
+                    
                     Sign in to your account 
                 </button>
             </div>
@@ -37,5 +48,19 @@
     import SocialButton from '@/components/SocialButton.vue'
     import CheckBox from '@/components/CheckBox.vue'
     import Card from '@/components/Card.vue'    
+    import { useRouter } from "vue-router";
+    
     const remember = ref(true)
+    const router = useRouter()
+    const signUp = () => {
+        router.push({
+            name: 'register'
+        })
+    }
+
+    const login = () => {
+        router.push({
+            name: 'home'
+        })
+    }
 </script>

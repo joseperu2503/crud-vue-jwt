@@ -24,7 +24,13 @@
                 </button>
             </div>
             <p class="text-sm font-light text-slate-500 mt-4">
-                Already have any account? <span class="text-indigo-600 font-medium cursor-pointer">Sign In.</span>
+                Already have any account? 
+                <span 
+                    class="text-indigo-600 font-medium cursor-pointer"
+                    @click="signIn"
+                >
+                    Sign In.
+                </span>
             </p>
         </Card>
     </Layout>
@@ -35,5 +41,13 @@
     import Input from '@/components/Input.vue'
     import SocialButton from '@/components/SocialButton.vue'
     import CheckBox from '@/components/CheckBox.vue'
-    import Card from '@/components/Card.vue'    
+    import Card from '@/components/Card.vue'
+    import { useRouter } from "vue-router";
+    
+    const router = useRouter()
+    const signIn = () => {
+        router.push({
+            name: 'login'
+        })
+    }
 </script>
