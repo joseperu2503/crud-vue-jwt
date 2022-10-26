@@ -4,7 +4,7 @@
             <h2 class="text-2xl font-bold">Welcome back</h2>
             <p class="text-sm font-light text-slate-500">
                 Start your website in seconds. Don’t have an account?
-                <span 
+                <span
                     class="text-indigo-600 font-medium cursor-pointer"
                     @click="signUp"
                 >
@@ -12,8 +12,8 @@
                 </span>
             </p>
             <div class="grid grid-cols-2 gap-6 mt-10">
-                <Input label="Username" type="text" placeholder="juniorp2503"/>
-                <Input label="Password" type="password" placeholder="•••••••••"/>
+                <Input v-model="email" label="Username" type="text" placeholder="juniorp2503"/>
+                <Input v-model="password" label="Password" type="password" placeholder="•••••••••"/>
             </div>
             <div class="mt-10 flex items-center">
                 <hr class="w-full border">
@@ -29,13 +29,13 @@
                 <span class="text-sm text-indigo-600 font-medium hover:underline cursor-pointer">Forgot password?</span>
             </div>
             <div class="mt-6">
-                <button 
-                    type="button" 
+                <button
+                    type="button"
                     class="w-full text-white bg-indigo-600 hover:bg-indigo-700 shadow border font-medium rounded-lg text-sm px-5 py-2 flex justify-center items-center"
                     @click="login"
                 >
-                    
-                    Sign in to your account 
+
+                    Sign in to your account
                 </button>
             </div>
         </Card>
@@ -47,9 +47,14 @@
     import Input from '@/components/Input.vue'
     import SocialButton from '@/components/SocialButton.vue'
     import CheckBox from '@/components/CheckBox.vue'
-    import Card from '@/components/Card.vue'    
+    import Card from '@/components/Card.vue'
     import { useRouter } from "vue-router";
-    
+    import { useStore } from 'vuex'
+
+    const store = useStore();
+    const email = ref('')
+    const password = ref('')
+
     const remember = ref(true)
     const router = useRouter()
     const signUp = () => {
@@ -59,8 +64,10 @@
     }
 
     const login = () => {
-        router.push({
-            name: 'home'
-        })
+        // router.push({
+        //     name: 'home'
+        // })
+        store.dispatch('login', {email: email.value , password: password.value})
+
     }
 </script>
