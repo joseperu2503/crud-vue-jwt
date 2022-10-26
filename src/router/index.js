@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Login from '@/pages/Login.vue'
 import Register from '@/pages/Register.vue'
-import Home from '@/pages/Home.vue'
+import Dashboard from '@/pages/Dashboard.vue'
 import store from '../store'
 
 const router = createRouter({
@@ -23,9 +23,9 @@ const router = createRouter({
             props:true
         },
         {
-            path: '/home',
-            name: 'home',
-            component: Home,
+            path: '/dashboard',
+            name: 'dashboard',
+            component: Dashboard,
             meta: {
                 requiresAuth: true
             }
@@ -46,7 +46,7 @@ router.beforeEach(async (to, from) => {
     if(to.path == '/login' && !to.redirectedFrom?.meta?.requiresAuth){
         store.commit('getToken')
         const checkToken = await  store.dispatch('checkToken')
-        return checkToken ? '/home' : true
+        return checkToken ? '/dashboard' : true
     }
     return true
 })

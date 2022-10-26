@@ -22,6 +22,13 @@ const store =  createStore({
             state.token = userToken
             console.log(state.token)
         },
+        logout(state){
+            sessionStorage.clear()
+            state.token = ''
+            router.push({
+                name: 'login'
+            })
+        },
         setToken(state,token){
             sessionStorage.setItem('token', JSON.stringify(token))
             state.token = token
@@ -36,16 +43,17 @@ const store =  createStore({
             .then(response => {
                 commit('setToken',response.data.access_token)
                 router.push({
-                    name: 'home'
+                    name: 'dashboard'
                 })
             })
         },
-        async checkToken(){
+        async checkToken(state){
             let check = false
-            await http.get('/check-token')
-            .then(response => {
-                check = true
-            }).catch(error => check = false)
+                await http.get('/check-token')
+                .then(response => {
+                    check = true
+                }).catch(error => check = false)
+
             return check
         },
     }

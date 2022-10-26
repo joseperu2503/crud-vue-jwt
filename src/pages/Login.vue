@@ -11,7 +11,7 @@
                     Sign up.
                 </span>
             </p>
-            <div class="grid grid-cols-2 gap-6 mt-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10">
                 <Input v-model="email" label="Username" type="text" placeholder="juniorp2503"/>
                 <Input v-model="password" label="Password" type="password" placeholder="•••••••••"/>
             </div>
@@ -20,11 +20,11 @@
                 <span class="mx-4">or</span>
                 <hr class="w-full border">
             </div>
-            <div class="flex flex-col gap-4 mt-10">
+            <div class="grid grid-cols-2 gap-4 mt-10">
                 <SocialButton text="Sign in with Facebook" img="src/assets/facebook.png"/>
                 <SocialButton text="Sign in with Google" img="src/assets/google.png"/>
             </div>
-            <div class="mt-6 flex justify-between">
+            <div class="mt-6 flex flex-col sm:flex-row justify-between gap-2">
                 <CheckBox v-model="remember" label="Remember me"/>
                 <span class="text-sm text-indigo-600 font-medium hover:underline cursor-pointer">Forgot password?</span>
             </div>
