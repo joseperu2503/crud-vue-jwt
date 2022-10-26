@@ -1,4 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
+import Login from '@/pages/Login.vue'
+import Register from '@/pages/Register.vue'
+import Home from '@/pages/Home.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -10,25 +13,28 @@ const router = createRouter({
         {
             path: '/login',
             name:'login',
-            component: () =>  import('../pages/Login.vue'),
+            component: Login,
         },
         {
             path: '/register',
             name: 'register',
-            component: () =>  import('../pages/Register.vue'),
+            component: Register,
             props:true
         },
         {
             path: '/home',
             name: 'home',
-            component: () =>  import('../pages/Home.vue'),
+            component: Home,
+            meta: {
+                requiresAuth: true
+            }
         },
     ]
 })
 
 router.beforeEach((to, from) => {
-    if(to.name == 'home' && from.name === 'login'){
-        return true
+    if(to.meta?.requiresAuth){
+        return 'login'
     }
     return true
 })
