@@ -6,9 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontSize: {
-        xxs: ['10px', '14px'],
-      }
+        fontSize: {
+            xxs: ['10px', '14px'],
+        }
     },
   },
   plugins: [],

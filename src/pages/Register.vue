@@ -14,7 +14,7 @@
                 <span class="mx-4">or</span>
                 <hr class="w-full border">
             </div>
-            <div class="flex flex-col gap-4 mt-10">
+            <div class="grid grid-cols-2 gap-4 mt-10">
                 <SocialButton text="Sign up with Facebook" img="src/assets/facebook.png"/>
                 <SocialButton text="Sign up with Google" img="src/assets/google.png"/>
             </div>
@@ -24,9 +24,9 @@
                 </button>
             </div>
             <p class="text-sm font-light text-slate-500 mt-4">
-                Already have any account? 
-                <span 
-                    class="text-indigo-600 font-medium cursor-pointer"
+                <span>Already have any account?</span>
+                <span
+                    class="text-indigo-600 font-medium cursor-pointer ml-2"
                     @click="signIn"
                 >
                     Sign In.
@@ -43,7 +43,7 @@
     import CheckBox from '@/components/CheckBox.vue'
     import Card from '@/components/Card.vue'
     import { useRouter } from "vue-router";
-    
+
     const router = useRouter()
     const signIn = () => {
         router.push({

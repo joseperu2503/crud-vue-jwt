@@ -3,16 +3,16 @@
         <Card>
             <h2 class="text-2xl font-bold">Welcome back</h2>
             <p class="text-sm font-light text-slate-500">
-                Start your website in seconds. Don’t have an account?
+                <span>Start your website in seconds. Don’t have an account?</span>
                 <span
-                    class="text-indigo-600 font-medium cursor-pointer"
+                    class="text-indigo-600 font-medium cursor-pointer ml-2"
                     @click="signUp"
                 >
                     Sign up.
                 </span>
             </p>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10">
-                <Input v-model="email" label="Username" type="text" placeholder="juniorp2503"/>
+                <Input v-model="email" label="Username" type="text" placeholder="joseperu2503@gmail.com"/>
                 <Input v-model="password" label="Password" type="password" placeholder="•••••••••"/>
             </div>
             <div class="mt-10 flex items-center">
