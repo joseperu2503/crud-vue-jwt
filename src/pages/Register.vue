@@ -19,14 +19,14 @@
                 <SocialButton text="Sign up with Google" img="src/assets/google.png"/>
             </div>
             <div class="mt-6">
-                <button type="button" class="w-full text-white bg-indigo-600 hover:bg-indigo-700 shadow border font-medium rounded-lg text-sm px-5 py-2 flex justify-center items-center">
+                <button type="button" class="w-full text-white bg-primary-600 hover:bg-primary-700 shadow border font-medium rounded-lg text-sm px-5 py-2 flex justify-center items-center">
                     Sign Up
                 </button>
             </div>
             <p class="text-sm font-light text-slate-500 mt-4">
                 <span>Already have any account?</span>
                 <span
-                    class="text-indigo-600 font-medium cursor-pointer ml-2"
+                    class="text-primary-600 font-medium cursor-pointer ml-2"
                     @click="signIn"
                 >
                     Sign In.

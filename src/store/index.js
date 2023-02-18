@@ -36,16 +36,7 @@ const store =  createStore({
     },
     actions: {
         async login({commit}, payload){
-            await http.post('/login',{
-                email: payload.email,
-                password: payload.password
-            })
-            .then(response => {
-                commit('setToken',response.data.access_token)
-                router.push({
-                    name: 'dashboard'
-                })
-            })
+
         },
         async checkToken(state){
             let check = false

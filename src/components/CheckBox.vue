@@ -1,7 +1,7 @@
 <template>
     <div class="flex">
-        <div 
-            :class="['w-5 h-5 border rounded flex items-center justify-center cursor-pointer',{'bg-indigo-500 text-white': modelValue}]"
+        <div
+            :class="['w-5 h-5 border rounded flex items-center justify-center cursor-pointer',{'bg-primary-500 text-white': modelValue}]"
             @click="click"
         >
             <i class="fas fa-check text-xxs" v-if="modelValue"></i>

@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   content: [
     "./index.html",
@@ -8,6 +11,9 @@ module.exports = {
     extend: {
         fontSize: {
             xxs: ['10px', '14px'],
+        },
+        colors: {
+            primary: colors.emerald,
         }
     },
   },
