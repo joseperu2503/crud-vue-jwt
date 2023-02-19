@@ -1,53 +1,100 @@
 <template>
-    <Layout>
-        <Card>
-            <h2 class="text-2xl font-bold">Sign Up</h2>
-            <div class="grid grid-cols-2 gap-6 mt-6">
-                <Input label="Name" type="text" placeholder="Jose"/>
-                <Input label="Lastname" type="text" placeholder="Perez"/>
-                <Input label="Username" type="text" placeholder="juniorp2503"/>
-                <Input label="Password" type="password" placeholder="•••••••••"/>
-                <Input label="Confirm Password" type="password" placeholder="•••••••••"/>
-            </div>
-            <div class="mt-10 flex items-center">
-                <hr class="w-full border">
-                <span class="mx-4">or</span>
-                <hr class="w-full border">
-            </div>
-            <div class="grid grid-cols-2 gap-4 mt-10">
-                <SocialButton text="Sign up with Facebook" img="src/assets/facebook.png"/>
-                <SocialButton text="Sign up with Google" img="src/assets/google.png"/>
-            </div>
-            <div class="mt-6">
-                <button type="button" class="w-full text-white bg-primary-600 hover:bg-primary-700 shadow border font-medium rounded-lg text-sm px-5 py-2 flex justify-center items-center">
-                    Sign Up
-                </button>
-            </div>
-            <p class="text-sm font-light text-slate-500 mt-4">
-                <span>Already have any account?</span>
-                <span
-                    class="text-primary-600 font-medium cursor-pointer ml-2"
-                    @click="signIn"
-                >
-                    Sign In.
-                </span>
-            </p>
-        </Card>
-    </Layout>
+  <Card>
+    <h2 class="text-2xl font-bold">Sign Up</h2>
+    <div class="grid grid-cols-2 gap-6 mt-6">
+      <Input
+        label="Name"
+        type="text"
+        placeholder="Jose"
+        v-model="form.name"
+        :error="errors.name"
+        name="name"
+      />
+      <Input
+        label="Email"
+        type="email"
+        placeholder="juniorp2503"
+        v-model="form.email"
+        :error="errors.email"
+        name="email"
+      />
+      <Input
+        label="Password"
+        type="password"
+        placeholder="•••••••••"
+        v-model="form.password"
+        :error="errors.password"
+      />
+      <Input
+        label="Confirm Password"
+        type="password"
+        placeholder="•••••••••"
+        v-model="form.password_confirmation"
+        :error="errors.password_confirmation"
+      />
+    </div>
+    <div class="mt-10 flex items-center">
+      <hr class="w-full border" />
+      <span class="mx-4">or</span>
+      <hr class="w-full border" />
+    </div>
+    <div class="grid grid-cols-2 gap-4 mt-10">
+      <SocialButton
+        text="Sign up with Facebook"
+        img="src/assets/facebook.png"
+      />
+      <SocialButton text="Sign up with Google" img="src/assets/google.png" />
+    </div>
+    <div class="mt-6">
+      <button
+        type="button"
+        class="w-full text-white bg-primary-600 hover:bg-primary-700 shadow border font-medium rounded-lg text-sm px-5 py-2 flex justify-center items-center"
+        @click="register()"
+      >
+        Sign Up
+      </button>
+    </div>
+    <p class="text-sm font-light text-slate-500 mt-4">
+      <span>Already have any account?</span>
+      <span
+        class="text-primary-600 font-medium cursor-pointer ml-2"
+        @click="signIn"
+      >
+        Sign In.
+      </span>
+    </p>
+  </Card>
 </template>
 <script setup>
-    import Layout from '@/layouts/LoginRegister.vue'
-    import {ref} from 'vue'
-    import Input from '@/components/Input.vue'
-    import SocialButton from '@/components/SocialButton.vue'
-    import CheckBox from '@/components/CheckBox.vue'
-    import Card from '@/components/Card.vue'
-    import { useRouter } from "vue-router";
+import { ref, reactive } from "vue";
+import Input from "@/components/Input.vue";
+import SocialButton from "@/components/SocialButton.vue";
+import Card from "@/components/Card.vue";
+import { useRouter } from "vue-router";
+import { AuthService } from "@/services/auth.service.js";
 
-    const router = useRouter()
-    const signIn = () => {
-        router.push({
-            name: 'login'
-        })
+const router = useRouter();
+const form = ref({
+  name: "",
+  email: "",
+  password: "",
+  password_confirmation: "",
+});
+const errors = ref({});
+
+const register = async () => {
+  console.log(form.value);
+  await AuthService.register(form.value)
+  .catch((error) => {
+    if (error.response.status === 422) {
+      errors.value = error.response.data.errors;
     }
+  });
+};
+
+const signIn = () => {
+  router.push({
+    name: "login",
+  });
+};
 </script>
