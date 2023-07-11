@@ -4,7 +4,7 @@ import { router } from "@/router";
 
 export const AuthService = {
   login(email, password){
-    return http.post("/login", {
+    return http.post("/auth/login", {
       email,
       password,
     })
@@ -14,7 +14,7 @@ export const AuthService = {
     })
   },
   register(data){
-    return http.post("/register", data)
+    return http.post("/auth/register", data)
     .then(response => {
       this.login(data.email, data.password)
     })

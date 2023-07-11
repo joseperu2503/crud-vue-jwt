@@ -9,17 +9,17 @@
         class="h-10 bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-1 focus:ring-primary-600  focus:border-primary-600 block w-full p-2.5 pr-10"
         :placeholder="placeholder"
         :name="name"
-      >
-        <i
-          v-if="showPassword && type=='password'"
-          class="fas fa-eye absolute right-2.5 text-gray-600 cursor-pointer"
-          @click="togglePassword"
-        ></i>
-        <i
-          v-if="!showPassword && type=='password'"
-          class="fas fa-eye-slash absolute right-2.5 text-gray-600 cursor-pointer"
-          @click="togglePassword"
-        ></i>
+      />
+      <i
+        v-if="showPassword && type=='password'"
+        class="fas fa-eye absolute right-2.5 text-gray-600 cursor-pointer"
+        @click="togglePassword"
+      ></i>
+      <i
+        v-if="!showPassword && type=='password'"
+        class="fas fa-eye-slash absolute right-2.5 text-gray-600 cursor-pointer"
+        @click="togglePassword"
+      ></i>
     </div>
     <span v-if="error" className='text-red-500 text-xs absolute'>{{error[0]}}</span>
   </div>
