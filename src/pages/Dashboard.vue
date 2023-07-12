@@ -12,7 +12,10 @@
       <span className="text-white cursor-pointer" @click="logout">Logout</span>
     </div>
     <div class="mt-10 mx-auto max-w-4xl">
-      <Card> Dashboard </Card>
+      <Card> Dashboard
+
+        <n-button>naive-ui</n-button>
+      </Card>
     </div>
   </div>
 </template>

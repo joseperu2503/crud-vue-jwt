@@ -66,11 +66,10 @@ import SocialButton from "@/components/SocialButton.vue";
 import CheckBox from "@/components/CheckBox.vue";
 import Card from "@/components/Card.vue";
 import { useRouter } from "vue-router";
-// import { useStore } from "vuex";
 import vue from "@/assets/vue.png";
 import http from "@/axios/index";
 import { AuthService } from "@/services/auth.service.js";
-// const store = useStore();
+
 const email = ref("");
 const password = ref("");
 const errors = ref({});
