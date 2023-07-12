@@ -13,17 +13,18 @@
     </div>
     <div class="mt-10 mx-auto max-w-4xl">
       <Card> Dashboard
-
         <n-button>naive-ui</n-button>
       </Card>
     </div>
   </div>
 </template>
 <script setup>
-import { AuthService } from "@/services/auth.service.js";
+import { useAuth } from '@/composables/useAuth'
 import Card from "@/components/Card.vue";
 
+const auth = useAuth()
+
 const logout = () => {
-  AuthService.logout();
+  auth.logout();
 };
 </script>

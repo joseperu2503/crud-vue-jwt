@@ -71,7 +71,7 @@ import Input from "@/components/Input.vue";
 import SocialButton from "@/components/SocialButton.vue";
 import Card from "@/components/Card.vue";
 import { useRouter } from "vue-router";
-import { AuthService } from "@/services/auth.service.js";
+import { useAuth } from '@/composables/useAuth'
 
 const router = useRouter();
 const form = ref({
@@ -81,10 +81,10 @@ const form = ref({
   password_confirmation: "",
 });
 const errors = ref({});
+const auth = useAuth()
 
-const register = async () => {
-  console.log(form.value);
-  await AuthService.register(form.value)
+const register = () => {
+  auth.register(form.value)
   .catch((error) => {
     if (error.response.status === 422) {
       errors.value = error.response.data.errors;

@@ -13,7 +13,7 @@
     </p>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10">
       <Input
-        v-model="email"
+        v-model="form.email"
         label="Email"
         type="email"
         placeholder="joseperu2503@gmail.com"
@@ -21,7 +21,7 @@
         name="email"
       />
       <Input
-        v-model="password"
+        v-model="form.password"
         label="Password"
         type="password"
         placeholder="•••••••••"
@@ -60,28 +60,32 @@
   </Card>
 </template>
 <script setup>
-import { reactive, ref } from "vue";
+import { ref } from "vue";
 import Input from "@/components/Input.vue";
 import SocialButton from "@/components/SocialButton.vue";
 import CheckBox from "@/components/CheckBox.vue";
 import Card from "@/components/Card.vue";
 import { useRouter } from "vue-router";
 import vue from "@/assets/vue.png";
-import http from "@/axios/index";
-import { AuthService } from "@/services/auth.service.js";
+import { useAuth } from '@/composables/useAuth'
 
-const email = ref("");
-const password = ref("");
+const form = ref({
+  email: "",
+  password: "",
+});
+
 const errors = ref({});
 
 const remember = ref(true);
 const router = useRouter();
+const auth = useAuth()
+
 const signUp = () => {
   router.push({name: "register"});
 };
 
-const login = async () => {
-  await AuthService.login(email.value, password.value)
+const login = () => {
+  auth.login(form.value)
   .catch((error) => {
     if (error.response.status === 422) {
       errors.value = error.response.data.errors;

@@ -3,7 +3,7 @@ import Login from '@/pages/Login.vue';
 import Register from '@/pages/Register.vue';
 import Dashboard from '@/pages/Dashboard.vue';
 import Layout1 from '@/layouts/layout1.vue';
-import { TokenService } from '@/services/token.service.js'
+import { useToken } from '@/composables/useToken'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -49,10 +49,10 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from) => {
-  // console.log(from, to);
+  const token = useToken()
+  const isValidToken = token.isValidToken()
 
   if (to.meta?.requiresAuth) {
-    const isValidToken = TokenService.isValidToken()
     if(!isValidToken){
       router.push('/login');
     }
@@ -60,7 +60,6 @@ router.beforeEach(async (to, from) => {
   }
 
   if (to.meta?.redirect) {
-    const isValidToken = TokenService.isValidToken()
     if(isValidToken){
       router.push('/dashboard');
     }

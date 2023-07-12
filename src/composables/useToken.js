@@ -1,20 +1,24 @@
 import Cookies from 'js-cookie'
 import jwt_decode from 'jwt-decode'
 
-export const TokenService = {
-  saveToken(token){
+export function useToken() {
+
+  const saveToken = (token) => {
     Cookies.set('token', token, {expires: 365, path: '/'})
-  },
-  getToken(){
+  }
+
+  const getToken = () => {
     const token = Cookies.get('token')
     return token
-  },
-  removeToken(){
+  }
+
+  const removeToken = () => {
     Cookies.remove('token')
-  },
-  isValidToken(){
+  }
+
+  const isValidToken = () => {
     console.log('isValidToken')
-    const token = this.getToken()
+    const token = getToken()
     if(!token){
       return false
     }
@@ -27,5 +31,12 @@ export const TokenService = {
       return tokenDate.getTime() > today.getTime()
     }
     return false
+  }
+
+  return {
+    saveToken,
+    getToken,
+    removeToken,
+    isValidToken
   }
 }
