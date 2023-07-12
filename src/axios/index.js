@@ -1,11 +1,7 @@
 import axios from 'axios';
-import store from '../store/index.js';
-
-// const tokenString = sessionStorage.getItem('token')
-// const userToken = JSON.parse(tokenString)
 
 const http = axios.create({
-  baseURL: 'http://laravel-10-api-jwt-articles.test:8080/api',
+  baseURL: process.env.VUE_APP_API_URL,
   headers: {
     'Content-type': 'application/json',
   },
