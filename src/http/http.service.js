@@ -11,8 +11,7 @@ const http = axios.create({
 const token = useToken()
 
 http.interceptors.request.use((request) => {
-  request.headers['Authorization'] =
-    'Bearer ' + JSON.parse(sessionStorage.getItem('token'));
+  request.headers['Authorization'] = `Bearer ${token.getToken()}`
   return request;
 });
 
