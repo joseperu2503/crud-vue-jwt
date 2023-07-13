@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gray-50 fixed right-0 bottom-0 left-0 top-0">
     <div
-      className="bg-primary-600 w-full py-4 flex justify-center items-center gap-4"
+      className="bg-primary-600 w-full py-4 flex justify-between items-center gap-4 px-8"
     >
       <router-link
         to="/dashboard"
@@ -9,17 +9,22 @@
       >
         Dashboard
       </router-link>
-      <span className="text-white cursor-pointer" @click="logout">Logout</span>
+      <n-button type="error" @click="logout">
+        Logout
+      </n-button>
     </div>
     <div class="mt-10 mx-auto max-w-4xl">
-      <Card>
-        <n-button @click="newArticle">New Article</n-button>
+      <n-card title="Articles">
+        <div class="mb-8">
+          <n-button @click="newArticle">New Article</n-button>
+        </div>
         <n-data-table
           :columns="columns"
           :data="articles"
           :bordered="false"
         />
-      </Card>
+      </n-card>
+
       <ArticleForm
         v-model:showModal="showModal"
         :articleId="articleId"
@@ -31,7 +36,6 @@
 <script setup>
 import { useAuth } from '@/composables/useAuth'
 import { ref } from 'vue';
-import Card from "@/components/Card.vue";
 import http from '@/http/http.service'
 import ArticleForm from './ArticleForm.vue'
 import { h } from 'vue'
@@ -72,7 +76,10 @@ const columns = ref([
           {
             tertiary: true,
             size: 'small',
-            onClick: () => editArticle(row.id)
+            onClick: () => editArticle(row.id),
+            style: {
+              marginRight: '8px'
+            },
           },
           { default: () => 'Edit' }
         ),

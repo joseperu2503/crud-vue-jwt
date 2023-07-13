@@ -30,7 +30,7 @@
           <n-button @click="closeModal">
             Cancel
           </n-button>
-          <n-button type="primary" @click="submit">
+          <n-button type="primary" @click="submit" :loading="submitLoading">
             Save
           </n-button>
         </div>
@@ -56,6 +56,7 @@ const errors = ref({});
 const submitMethod = ref('')
 const urlMethod = ref('')
 const loading = ref(false)
+const submitLoading = ref(false)
 
 const initForm = () => {
   form.value = {
@@ -99,16 +100,19 @@ const loadArticle = () => {
 }
 
 const submit = () => {
-  return http({
+  submitLoading.value = true
+  http({
     method: submitMethod.value,
     url: urlMethod.value,
     data: form.value
   })
   .then(response => {
+    submitLoading.value = false
     emit('reloadData')
     closeModal()
   })
   .catch((error) => {
+    submitLoading.value = false
     if (error.response.status === 422) {
       errors.value = error.response.data.errors;
     }

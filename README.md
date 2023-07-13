@@ -13,3 +13,7 @@ npm install
 cp .env.example .env.development
 cp .env.example .env.production
 ```
+
+## No me gusta de la libreria Naive
+
+No puedo personalizar muy comodamente las columnas del componente datatable

@@ -6,7 +6,7 @@
         label="Name"
         type="text"
         placeholder="Jose"
-        v-model="form.name"
+        v-model="formRegister.name"
         :error="errors.name"
         name="name"
       />
@@ -14,7 +14,7 @@
         label="Email"
         type="email"
         placeholder="juniorp2503"
-        v-model="form.email"
+        v-model="formRegister.email"
         :error="errors.email"
         name="email"
       />
@@ -22,14 +22,14 @@
         label="Password"
         type="password"
         placeholder="•••••••••"
-        v-model="form.password"
+        v-model="formRegister.password"
         :error="errors.password"
       />
       <Input
         label="Confirm Password"
         type="password"
         placeholder="•••••••••"
-        v-model="form.password_confirmation"
+        v-model="formRegister.password_confirmation"
         :error="errors.password_confirmation"
       />
     </div>
@@ -46,13 +46,9 @@
       <SocialButton text="Sign up with Google" img="src/assets/google.png" />
     </div>
     <div class="mt-6">
-      <button
-        type="button"
-        class="w-full text-white bg-primary-600 hover:bg-primary-700 shadow border font-medium rounded-lg text-sm px-5 py-2 flex justify-center items-center"
-        @click="register()"
-      >
+      <n-button type="primary" @click="register" block :loading="loading">
         Sign Up
-      </button>
+      </n-button>
     </div>
     <p class="text-sm font-light text-slate-500 mt-4">
       <span>Already have any account?</span>
@@ -74,23 +70,8 @@ import { useRouter } from "vue-router";
 import { useAuth } from '@/composables/useAuth'
 
 const router = useRouter();
-const form = ref({
-  name: "",
-  email: "",
-  password: "",
-  password_confirmation: "",
-});
-const errors = ref({});
-const auth = useAuth()
 
-const register = () => {
-  auth.register(form.value)
-  .catch((error) => {
-    if (error.response.status === 422) {
-      errors.value = error.response.data.errors;
-    }
-  });
-};
+const {register, formRegister, errors, loading} = useAuth()
 
 const signIn = () => {
   router.push({

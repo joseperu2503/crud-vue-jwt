@@ -11,9 +11,9 @@
         Sign up.
       </span>
     </p>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-6 mt-10">
       <Input
-        v-model="form.email"
+        v-model="formLogin.email"
         label="Email"
         type="email"
         placeholder="joseperu2503@gmail.com"
@@ -21,7 +21,7 @@
         name="email"
       />
       <Input
-        v-model="form.password"
+        v-model="formLogin.password"
         label="Password"
         type="password"
         placeholder="•••••••••"
@@ -49,13 +49,9 @@
       >
     </div>
     <div class="mt-6">
-      <button
-        type="button"
-        class="w-full text-white bg-primary-600 hover:bg-primary-700 shadow border font-medium rounded-lg text-sm px-5 py-2 flex justify-center items-center"
-        @click="login"
-      >
+      <n-button type="primary" @click="login" block :loading="loading">
         Sign in to your account
-      </button>
+      </n-button>
     </div>
   </Card>
 </template>
@@ -69,27 +65,11 @@ import { useRouter } from "vue-router";
 import vue from "@/assets/vue.png";
 import { useAuth } from '@/composables/useAuth'
 
-const form = ref({
-  email: "",
-  password: "",
-});
-
-const errors = ref({});
-
-const remember = ref(true);
 const router = useRouter();
-const auth = useAuth()
+const {login, formLogin, errors, loading, remember} = useAuth()
 
 const signUp = () => {
   router.push({name: "register"});
 };
 
-const login = () => {
-  auth.login(form.value)
-  .catch((error) => {
-    if (error.response.status === 422) {
-      errors.value = error.response.data.errors;
-    }
-  });
-};
 </script>
