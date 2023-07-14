@@ -3,7 +3,7 @@
     <label class="block mb-1 text-sm font-medium text-gray-900 dark:text-gray-300">{{label}}</label>
     <div class="flex relative items-center">
       <input
-        v-model="modelValue"
+        :value="modelValue"
         @input="input"
         :type="type == 'password' ? showPassword ? 'text' : 'password'  : type"
         class="h-10 bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-1 focus:ring-primary-600  focus:border-primary-600 block w-full p-2.5 pr-10"
@@ -25,7 +25,7 @@
   </div>
 </template>
 <script setup>
-import { toRefs, ref } from 'vue'
+import { ref } from 'vue'
 
 // const props = defineProps({
 //   label: String,
