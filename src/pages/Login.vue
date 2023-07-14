@@ -37,9 +37,9 @@
     <div class="grid grid-cols-2 gap-4 mt-10">
       <SocialButton
         text="Sign in with Facebook"
-        img="src/assets/facebook.png"
+        img="/assets/facebook.png"
       />
-      <SocialButton text="Sign in with Google" img="src/assets/google.png" />
+      <SocialButton text="Sign in with Google" img="/assets/google.png" />
     </div>
     <div class="mt-6 flex flex-col sm:flex-row justify-between gap-2">
       <CheckBox v-model="remember" label="Remember me" />
@@ -62,7 +62,7 @@ import SocialButton from "@/components/SocialButton.vue";
 import CheckBox from "@/components/CheckBox.vue";
 import Card from "@/components/Card.vue";
 import { useRouter } from "vue-router";
-import vue from "@/assets/vue.png";
+import vue from "/assets/vue.png";
 import { useAuth } from '@/composables/useAuth'
 
 const router = useRouter();

@@ -41,9 +41,9 @@
     <div class="grid grid-cols-2 gap-4 mt-10">
       <SocialButton
         text="Sign up with Facebook"
-        img="src/assets/facebook.png"
+        img="/assets/facebook.png"
       />
-      <SocialButton text="Sign up with Google" img="src/assets/google.png" />
+      <SocialButton text="Sign up with Google" img="/assets/google.png" />
     </div>
     <div class="mt-6">
       <n-button type="primary" @click="register" block :loading="loading">
@@ -62,7 +62,6 @@
   </Card>
 </template>
 <script setup>
-import { ref, reactive } from "vue";
 import Input from "@/components/Input.vue";
 import SocialButton from "@/components/SocialButton.vue";
 import Card from "@/components/Card.vue";

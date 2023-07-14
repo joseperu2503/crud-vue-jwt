@@ -5,7 +5,7 @@
         <router-view />
       </div>
       <div class="hidden lg:flex items-center justify-center">
-        <img src="/src/assets/illustration.svg" alt="" />
+        <img src="/assets/illustration.svg" alt="" />
       </div>
     </div>
   </div>

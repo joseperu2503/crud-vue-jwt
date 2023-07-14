@@ -17,3 +17,7 @@ cp .env.example .env.production
 ## No me gusta de la libreria Naive
 
 No puedo personalizar muy comodamente las columnas del componente datatable
+
+
+## Deploy en Nelify
+el archivo _redirects es para que el router funcione correctamente
