@@ -41,11 +41,7 @@ import ArticleForm from './ArticleForm.vue'
 import { h } from 'vue'
 import { NButton } from 'naive-ui'
 
-const auth = useAuth()
-
-const logout = () => {
-  auth.logout();
-};
+const {logout} = useAuth()
 
 const articles = ref([])
 

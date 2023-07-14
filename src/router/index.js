@@ -49,18 +49,18 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from) => {
-  const token = useToken()
-  const isValidToken = token.isValidToken()
+  const {removeToken, isValidToken} = useToken()
 
   if (to.meta?.requiresAuth) {
-    if(!isValidToken){
+    if(!isValidToken()){
+      removeToken()
       router.push('/login');
     }
     return true;
   }
 
   if (to.meta?.redirect) {
-    if(isValidToken){
+    if(isValidToken()){
       router.push('/dashboard');
     }
     return true;
