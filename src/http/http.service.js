@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useToken } from "@/composables/useToken";
-import {router} from '../router'
+// import {router} from '../router'
 
 const http = axios.create({
   baseURL: process.env.VUE_APP_API_URL,
@@ -16,15 +16,15 @@ http.interceptors.request.use((request) => {
   return request;
 });
 
-http.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response && error.response.status === 401) {
-      removeToken()
-      router.push('login')
-    }
-    return Promise.reject(error);
-  }
-);
+// http.interceptors.response.use(
+//   (response) => response,
+//   (error) => {
+//     if (error.response && error.response.status === 401) {
+//       removeToken()
+//       router.push('login')
+//     }
+//     return Promise.reject(error);
+//   }
+// );
 
 export default http;
