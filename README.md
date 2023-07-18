@@ -21,3 +21,24 @@ No puedo personalizar muy comodamente las columnas del componente datatable
 
 ## Deploy en Nelify
 el archivo _redirects es para que el router funcione correctamente
+
+## Docker prod
+docker build -t crud-vue-jwt .
+
+docker run -p 5725:8080 crud-vue-jwt
+
+http://localhost:5725
+
+## Docker dev
+
+### primera vez y cada vez que se modifique docker-compose.yml
+docker-compose up --build --no-recreate -d
+
+### A partir de la segunda vez, podemos usar
+docker-compose up -d
+docker exec -it crud-vue-jwt sh
+npm i 
+npm run dev
+
+
+https://dev.to/ysmnikhil/how-to-build-with-react-or-vue-with-vite-and-docker-1a3l
