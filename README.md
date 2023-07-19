@@ -22,6 +22,13 @@ No puedo personalizar muy comodamente las columnas del componente datatable
 ## Deploy en Nelify
 el archivo _redirects es para que el router funcione correctamente
 
+## Deploy en Cpanel
+el archivo .htaccess es para que el router funcione correctamente
+
+Configurar redirecciones en el archivo .htaccess (si estás utilizando Apache)
+
+Esta configuración asegurará que todas las solicitudes que no correspondan a archivos existentes (como las rutas de tu SPA) sean redirigidas a index.html, donde Vue Router manejará la navegación.
+
 ## Docker prod
 docker build -t crud-vue-jwt .
 
