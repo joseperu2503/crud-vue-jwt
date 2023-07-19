@@ -19,7 +19,7 @@
     >
 
         <img :src="img" class="h-8 mr-1.5">
-        <span class="hidden sm:block">{{text}}</span>
+        <span class="">{{text}}</span>
 
     </button>
 </template>

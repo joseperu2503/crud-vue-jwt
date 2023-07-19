@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Login from '@/pages/Login.vue';
 import Register from '@/pages/Register.vue';
 import Dashboard from '@/pages/Dashboard.vue';
-import Layout1 from '@/layouts/Layout1.vue';
 import { useToken } from '@/composables/useToken'
 
 const router = createRouter({
@@ -14,7 +13,6 @@ const router = createRouter({
     },
     {
       path: '',
-      component: Layout1,
       meta: {
         redirect: true,
       },
