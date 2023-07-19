@@ -5,7 +5,7 @@
   >
     <Card>
       <h2 class="text-2xl font-bold">Sign Up</h2>
-      <div class="grid grid-cols-1 gap-6 mt-6">
+      <div class="grid grid-cols-1 gap-6 mt-6" @keyup.enter="register">
         <Input
           label="Name"
           type="text"

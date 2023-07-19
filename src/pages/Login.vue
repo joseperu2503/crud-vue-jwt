@@ -14,7 +14,7 @@
           Sign up.
         </span>
       </p>
-      <div class="grid grid-cols-1  gap-6 mt-10">
+      <div class="grid grid-cols-1 gap-6 mt-10" @keyup.enter="login">
         <Input
           v-model="formLogin.email"
           label="Email"
